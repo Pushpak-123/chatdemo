@@ -28,16 +28,17 @@ export default class Chat extends Component {
       };
 
 
-      gotoDetails = (name) => {
+      gotoDetails = (user) => {
         this.props.navigation.navigate('Chat',
-        {name: name});
+        {name: user.name,
+        status:this.status[user.status]});
       }
 
     renderItem = (user) => {
       console.log(user)
         return(
             <View style={styles.rowStyle}>
-                <Text onPress={() =>  this.gotoDetails(user.item.name)} style={styles.nameStyle}>
+                <Text onPress={() =>  this.gotoDetails(user.item)} style={styles.nameStyle}>
                     {user.item.name}
                 </Text>
                 <Text style={styles.statusStyle}>

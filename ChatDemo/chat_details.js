@@ -45,13 +45,20 @@ export default class App extends Component<Props> {
     console.log(this.props);
     
     return (
+      <View style={{flex:1}}>
+        <View style={{backgroundColor:'green',alignItems:'center',  justifyContent: 'center'
+        ,height:50}}>
+          <Text style={{color:'white',alignSelf:'center'}}>{'Status '+this.props.navigation.state.params.status}</Text>
+        </View>
       <GiftedChat
+      style={{flex:1,backgroundColor:'gray'}}
         messages={this.state.messages}
         onSend={messages => this.onSend(messages)}
         user={{
           _id: 1,
         }}
       />
+      </View>
     )
   }
 }
