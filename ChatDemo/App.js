@@ -8,7 +8,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 
 import { GiftedChat } from 'react-native-gifted-chat'
 import  Chat from "./chat_list";
@@ -20,6 +20,25 @@ type Props = {};
 let nav = createStackNavigator({
   List : {
     screen : Chat,
+    navigationOptions : {
+      header :
+      <View
+      style={{
+        flexDirection: "row",
+        backgroundColor : 'purple',
+        height: 50,
+        alignItems : 'center',
+        justifyContent: 'center',
+        flexDirection : 'column',
+        marginTop: Platform.OS == "ios" ? 20 : 0 // only for IOS to give StatusBar Space
+      }}
+    >
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={{color:'white'}}> Chat </Text>
+      </TouchableOpacity>
+      <Text style={{color:'white',alignSelf:'flex-end'}}> Settings </Text>
+    </View>
+    }
   },
   Chat : {
     screen : ChatDetails,
